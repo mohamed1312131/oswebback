@@ -1,0 +1,37 @@
+spring:
+  datasource:
+    # Supports Railway's auto-injected PostgreSQL env vars (PGHOST, PGPORT, PGDATABASE, PGUSER, PGPASSWORD).
+    # For local dev, set these vars or override with PG_HOST/PG_PORT/PG_DB/PG_USER/PG_PASSWORD.
+    url: jdbc:postgresql://${PGHOST:${PG_HOST:localhost}}:${PGPORT:${PG_PORT:5432}}/${PGDATABASE:${PG_DB:omnischool}}
+    username: ${PGUSER:${PG_USER:postgres}}
+    password: ${PGPASSWORD:${PG_PASSWORD:}}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    open-in-view: false
+  mail:
+    host: ${MAIL_HOST:ssl0.ovh.net}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:contact@omnischool.tn}
+    password: ${MAIL_PASSWORD:OmniSchool1987!}
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
+      starttls.required: true
+
+jwt:
+  secret: ${JWT_SECRET:omnischool-secret-2024}
+  expiration: 86400000
+  refresh-expiration: 604800000
+
+app:
+  mail:
+    enabled: ${MAIL_ENABLED:true}
+  cors:
+    # Allow Vite dev server + deployed site.
+    allowed-origins: http://localhost:5173,http://localhost:8081,https://omnischool.tn
+
+server:
+  port: ${SERVER_PORT:8080}

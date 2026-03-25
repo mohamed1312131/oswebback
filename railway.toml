@@ -1,0 +1,6 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "java -jar target/omnischool-backend-0.0.1-SNAPSHOT.jar"
+restartPolicyType = "on_failure"
