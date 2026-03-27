@@ -53,3 +53,4 @@ public class ContactMessage {
         if (status == null) status = ContactMessageStatus.NEW;
     }
 }
+//updates
